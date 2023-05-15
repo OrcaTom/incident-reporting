@@ -1,0 +1,50 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Your report has been received",
+        html: "Your incident reference number<br><strong>HDJ2123F</strong>"
+      }) }}
+
+      <p>
+        We've sent you a confirmation email with a link so you can track the progress of your report.
+      </p>
+
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>
+        We will check your report to see if we already know about the incident. If we do, we will combine your report with any information we already have.
+      </p>
+
+      <p>
+        We will use the information you have provided to:
+      </p>
+      <ul>
+        <li>prioritise our response</li>
+        <li>investigate the incident</li>
+        <li>respond to and resolve the incident</li>
+      </ul>
+      <p>
+        You can use the link in your confirmation email to see what the Environment Agency is doing about your incident at any time.
+      </p>
+      <p>
+        <a href="#">
+          What did you think of this service?
+        </a> (takes 30 seconds)
+      </p>
+
+
+    </div>
+  </div>
+
+{% endblock %}

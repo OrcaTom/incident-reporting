@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+
+    <h1 class="govuk-heading-xl">
+      {{ serviceName }}
+    </h1>
+    <p>Use this service to report:</p>
+    <ul class="govuk-list">
+      <li>flooding</li>
+      <li>pollution to water or land, including smells</li>
+      <li>people taking water illegally - for example from rivers, streams, canals or using wells</li>
+      <li>poaching or illegal fishing</li>
+    </ul>
+
+    <h2 class="govuk-heading-m">If you cannot report online</h2>
+    <p>If you have anything else to report or cannot use the online service you can call the Environment Agency.</p>
+    <ul class="govuk-list">
+      <li>Environment Agency incident hotline</li>
+      <li>Telephone (24 hours): 020 7946 0101</li>
+    </ul>
+    <p class="govuk-body">
+      <a class="govuk-link" href="#">Find out about call charges</a>
+    </p>
+
+    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+  </div>
+</div>
+
+{% endblock %}

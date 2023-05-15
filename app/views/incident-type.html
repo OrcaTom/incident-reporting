@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="incident-type-answer" method="post">
+{{ govukRadios({
+  name: "incident-type",
+  fieldset: {
+    legend: {
+      text: "What type of incident do you want to report?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "flooding",
+      text: "Flooding"
+    },
+    {
+      value: "water-pollution",
+      text: "Water pollution"
+    },
+    {
+      value: "smell",
+      text: "Smell"
+    },
+    {
+      value: "illegal-fishing",
+      text: "Illegal fishing"
+    },
+    {
+      value: "fly-tipping",
+      text: "Fly tipping"
+    },
+    {
+      value: "other",
+      text: "Something else"
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
