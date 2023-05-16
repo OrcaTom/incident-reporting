@@ -18,11 +18,27 @@ router.post('/incident-type-answer', function (req, res) {
     // Send user to next page
     res.redirect('/contact-local-council')
   }
-  if (incidenttype == "other"){
+  else if (incidenttype == "other"){
     // Send user to next page
     res.redirect('/something-else')
   } else {
     // Send user to ineligible page
     res.redirect('/location')
+  }
+})
+
+router.post('/location-answer', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var incidenttype = req.session.data['incident-type']
+
+  // Check whether the variable matches a condition
+  if (incidenttype == "smell"){
+    // Send user to next page
+    res.redirect('/smell-details-questions')
+  }
+  else {
+    // Send user to ineligible page
+    res.redirect('/evidence')
   }
 })
