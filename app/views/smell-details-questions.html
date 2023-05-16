@@ -1,0 +1,157 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Describe the smell
+      </h1>
+
+      <form class="form" action="/evidence" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "noticeable",
+          fieldset: {
+            legend: {
+              text: "When the smell is present can you smell it when breathing normally?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Answer no if you have to sniff consciously to notice the smell."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No, it is quite faint"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "distinct",
+          fieldset: {
+            legend: {
+              text: "Is it a strong, recognisable smell that sticks to things like clothing and hair?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, can you smell it on washing that's been hung out to dry."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "overwhelming",
+          fieldset: {
+            legend: {
+              text: "Does the smell make it difficult to go about your daily business?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, you may have to close your windows, or cover your face when outside but can still manage to go about your daily business even if unpleasant."
+          },
+          items: [
+            {
+              value: "overwhelming",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "overwhelming",
+          fieldset: {
+            legend: {
+              text: "Does the smell make it difficult to go about your daily business?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, you have to close your windows, or cover your nose and mouth when outside."
+          },
+          items: [
+            {
+              value: "overwhelming",
+              text: "Yes, but it is unpleasant "
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "intolerable",
+          fieldset: {
+            legend: {
+              text: "Does the smell mean you have to leave the area it affects?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "This means the smell is so intolerable, for example it makes your eyes stream and you cannot go about your daily business."
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
