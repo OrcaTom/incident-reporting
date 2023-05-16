@@ -17,17 +17,55 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Where have you seen {{ data['incident-type']}}?
+        Where is the {{ data['incident-type']}}?
       </h1>
+      <form class="form" action="/location-answer" method="post">
+      {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 
-      <form class="form" action="/path/of/next/page" method="post">
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        label: {
+          text: "Give any detail about the location that would help us investigate the problem",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Do not include personal information, like someone's name."
+        }
+      }) }}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+      {{ govukInput({
+        label: {
+          text: "Postcode (optional)"
+        },
+        classes: "govuk-input--width-10",
+        id: "width-10",
+        name: "postcode"
+      }) }}
 
-      </form>
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
+      {{ govukCheckboxes({
+        name: "waste",
+        fieldset: {
+          legend: {
+            text: ""
+          }
+        },
+        items: [
+          {
+            value: "carcasses",
+            text: "This is my home postcode"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
     </div>
   </div>
 

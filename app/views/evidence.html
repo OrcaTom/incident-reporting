@@ -16,26 +16,51 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        Upload photo evidence
-      </h1>
-      <p>You can upload any photos you think may help us understand the problem.</p>
-
       <form class="form" action="/path/of/next/page" method="post">
-
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
         {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
+        {% set fileHtml %}
         {{ govukFileUpload({
           id: "file-upload-1",
           name: "file-upload-1",
           label: {
-            text: "Upload an image"
+            text: "Upload a file"
           }
         }) }}
+        {% endset -%}
+
+{{ govukRadios({
+ name: "contact",
+ fieldset: {
+   legend: {
+     text: "Would you like to send any evidence of the problem?",
+     isPageHeading: true,
+     classes: "govuk-fieldset__legend--l"
+   }
+ },
+ hint: {
+   text: "Upload any photos, videos or documents you think may help us understand the problem."
+ },
+ items: [
+   {
+     value: "yes",
+     text: "Yes",
+     conditional: {
+       html: fileHtml
+     }
+   },
+   {
+     value: "no",
+     text: "No"
+   }
+ ]
+}) }}
 
         {{ govukButton({
           text: "Continue"
         }) }}
+
 
       </form>
 
